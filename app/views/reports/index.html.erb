@@ -1,0 +1,10 @@
+<h1>Showing all Posts</h1>
+<%= link_to 'Add Post', new_report_path %>
+<% @reports.each do |report| %>
+  <p><%= report.id %></p>
+  <p><%= report.time_made %></p>
+  <p><%= report.image_url %></p>
+  <p><%= report.notes %></p>
+  <%= link_to 'Edit', edit_report_path(report) %>
+<% end %>
+

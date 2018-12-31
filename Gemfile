@@ -36,6 +36,17 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# Support JQuery
+gem 'jquery-rails'
+
+# Use RSpec for testing 
+gem 'rails-controller-testing'
+gem 'rspec'
+gem 'rspec-core'
+gem 'rspec-expectations'
+gem 'rspec-mocks'
+gem 'rspec-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

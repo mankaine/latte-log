@@ -1,0 +1,121 @@
+// Place all the styles related to the Videos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$coffee-with-too-much-milk: #DFCCAF;
+$coffee-with-milk: #BE9B7B;
+$coffee-normal: #6F4436;
+$coffee-dark: #3C2F2F;
+$coffee-red: #854442;
+
+.page-title {
+  color: $coffee-dark;
+  font-family: 'Playfair Display', serif;
+  margin-left: 1em;
+  margin-top: 0;
+  font-size: 2.5em;
+  margin-bottom: -0.5em;
+}
+
+.videos-container {
+  background: $coffee-red;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 0.3em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 0.5em;
+  border-radius: 10px;
+}
+
+.new-video-container {
+  margin: 2em 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.new-video-button {
+  color: $coffee-dark;
+  background: $coffee-with-too-much-milk;
+  padding: 0.25em 0.65em;
+  font-size: 1.5em;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.new-video-button:hover {
+  color: $coffee-with-too-much-milk;
+  background: $coffee-dark;
+  transition: 0.2s;
+}
+
+.new-video {
+  text-decoration: none;
+  color: white;
+  margin-left: 0.5em;
+  margin-top: 5px;
+}
+
+.button {
+  border-radius: 5px;
+  color: $coffee-dark;
+  background: $coffee-with-too-much-milk;
+  padding: 0.5vw;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.button:hover {
+  color: $coffee-with-too-much-milk;
+  background: $coffee-dark;
+  transition: 0.3s;
+}
+
+.video-link {
+}
+
+.video-notes {
+  margin: 1vw;
+  color: white;
+}
+
+%form-entry {
+  border-radius: 5px;
+  border: 2px solid $coffee-with-too-much-milk;
+  padding: 10px;
+  color: white;
+  background: rgba(0, 0, 0, 0);
+  font-size: 1em;
+}
+
+.text-field-form {
+  @extend %form-entry;
+  width: calc(100% - 2em);
+}
+
+.free-text-entry-form {
+  @extend %form-entry;
+  width: calc(100% - 2em);
+  height: 15em;
+  resize: none;
+}
+
+.create-video {
+  background: $coffee-with-too-much-milk;
+  border: 0;
+  border-radius: 5px;
+  font-size: 1em;
+  color: $coffee-dark;
+  margin-bottom: 1em;
+  padding: 0.5em 1em;
+  transition: 0.2s;
+}
+
+.create-video:hover {
+  background: $coffee-dark;
+  color: $coffee-with-too-much-milk;
+  transition: 0.2s;
+}
+

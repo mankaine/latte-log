@@ -1,0 +1,22 @@
+<h1 class='page-title'>Videos</h1>
+<div class='videos-container'>
+  <div class='new-video-container'>
+    <div class='circle-container'>
+      <div class='circle'></div>
+      <%= link_to '+', new_video_path, class: 'new-video-button' %>
+    </div>
+    <%= link_to 'Add Video', new_video_path, class: 'new-video' %>
+  </div>
+  <% @videos.each do |video| %>
+    <%= link_to 'Video Link', video.url, target: '_blank',
+        rel: 'noopener noreferrer', class: 'button video-link' %>
+    <%= link_to 'Edit Video', edit_video_path(video), class: 'button edit-link' %>
+    <%= link_to 'Delete Video', video_path(video), class: 'button edit-link',
+        method: :delete, data: { confirm: 'Are you sure?'} %><br />
+    <div class='video-notes'>
+      <%= video.notes.gsub(/\r\n/, '<br />').html_safe %>
+    </div>
+    <br />
+  <% end %>
+</div>
+

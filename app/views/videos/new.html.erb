@@ -1,0 +1,17 @@
+<h1 class='page-title'>Note New Video</h1>
+<div class='videos-container'>
+  <%= form_with model: @video, local: true do |form| %>
+    <p>
+      <%= form.label :video_link %><br />
+      <%= form.text_field :url, class: 'text-field-form' %><br>
+    </p>
+    <p>
+      <%= form.label :notes %><br />
+      <%= form.text_area :notes, class: 'free-text-entry-form' %><br>
+    </p>
+    <p>
+      <%= form.submit 'Save', class: 'create-video' %><br>
+    </p>
+  <% end %>
+</div>
+

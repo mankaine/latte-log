@@ -1,0 +1,26 @@
+<%= form_with scope: :report, url: reports_path, local: true do |form| %>
+  <p>
+    <%= form.label :day %><br>
+    <%= form.text_field :day %><br>
+  </p>
+  <p>
+    <%= form.label :month %><br>
+    <%= form.text_field :month %><br>
+  </p>
+  <p>
+    <%= form.label :year %><br>
+    <%= form.text_field :year %><br>
+  </p>
+  <p>
+    <%= form.label :image_url %><br>
+    <%= form.text_field :image_url %><br>
+  </p>
+  <p>
+    <%= form.label :notes %><br>
+    <%= form.text_field :notes %><br>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+

@@ -2,8 +2,8 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
@@ -13,3 +13,88 @@
  *= require_tree .
  *= require_self
  */
+ 
+ .header .title {
+  color: #3C2F2F;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 4em;
+  margin-left: 2vw;
+  position: relative;
+  width: 5em;
+  z-index: 1;
+}
+
+.header .nav-bar {
+  bottom: 0;
+  background: #854442;
+  color: white;
+  width: calc(100% - 15em - 4em);
+  margin: 0.3em 2em 0.3em 2em;
+  padding-left: 15em;
+  font-size: 1.25em;
+  position: relative;
+  top: -3.5em;
+  border-radius: 5px;
+  z-index: 0;
+}
+
+.header ul {
+  list-style-type: none;
+  padding-left: 0;
+  width: 100%;
+}
+
+.main-container {
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.footer {
+  bottom: 0;
+  background: #3C2F2F;
+  color: white;
+  width: calc(100% - 4vw);
+  padding: 0.3em 2vw;
+  margin-top: 2em;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer ul {
+  list-style-type: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.footer ul li, .header ul li {
+  display: inline;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.header ul li a, .footer ul li a {
+  border-bottom: 1px solid #BE9B7B;
+  color: white;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.header ul li a:hover {
+  color: #3C2F2F;
+}
+
+.footer ul li a:hover {
+  color: #BE9B7B;
+}
+
+body {
+  background: #BE9B7B;
+  margin: 0;
+  font-family: 'Heebo', sans-serif;
+}
+

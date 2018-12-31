@@ -1,0 +1,20 @@
+<h1>Edit Post</h1>
+<%= form_with(model: @report, local: true) do |form| %>
+  <p>
+    <%= form.label :time_made %><br>
+    <%= form.text_field :time_made, value: @report.time_made %><br>
+  </p>
+  <p>
+    <%= form.label :image_url%><br>
+    <%= form.text_field :image_url, value: @report.image_url %><br>
+  </p>
+  <p>
+    <%= form.label :notes %><br>
+    <%= form.text_field :notes, value: @report.notes%><br>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+<%= link_to 'Back', reports_path %>
+
