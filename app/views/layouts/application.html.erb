@@ -11,21 +11,23 @@
   </head>
 
   <body>
-    <div class='header'>
-      <h1 class='title'>Latte Log</h1>
-      <div class='nav-bar'>
-        <ul>
-          <li><%= link_to 'Posts', reports_path %></li>
-          <li><%= link_to 'Videos', videos_path %></li>
-        </ul>
+    <div class='content'>
+      <div class='header'>
+        <h1 class='title'>Latte Log</h1>
+        <div class='nav-bar'>
+          <ul>
+            <li><%= link_to 'Posts', reports_path %></li>
+            <li><%= link_to 'Videos', videos_path %></li>
+          </ul>
+        </div>
       </div>
+      <%= yield %>
     </div>
-    <%= yield %>
     <div class='footer'>
       <ul>
         <li><a href='https://mankaine.github.io/portfolio/' target='_blank' rel='noopener noreferrer'>Designed and built by Will Khaine</a></li>
         <li>🥐</li>
-        <li><a href='https://github.com/mankaine/latte-log-ruby' target='_blank' rel='noopener noreferrer'>View the code</a></li>
+        <li><a href='https://github.com/mankaine/latte-log' target='_blank' rel='noopener noreferrer'>View the code</a></li>
       </ul>
     </div>
   </body>

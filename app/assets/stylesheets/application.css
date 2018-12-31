@@ -13,8 +13,8 @@
  *= require_tree .
  *= require_self
  */
- 
- .header .title {
+
+.header .title {
   color: #3C2F2F;
   font-family: 'Playfair Display', serif;
   font-weight: 900;
@@ -26,16 +26,16 @@
 }
 
 .header .nav-bar {
-  bottom: 0;
   background: #854442;
+  border-radius: 5px;
+  bottom: 0;
   color: white;
-  width: calc(100% - 15em - 4em);
+  font-size: 1.25em;
   margin: 0.3em 2em 0.3em 2em;
   padding-left: 15em;
-  font-size: 1.25em;
   position: relative;
   top: -3.5em;
-  border-radius: 5px;
+  width: calc(100% - 15em - 4em);
   z-index: 0;
 }
 
@@ -45,24 +45,17 @@
   width: 100%;
 }
 
-.main-container {
-  min-height: 100vh;
-  overflow: hidden;
-  display: block;
-  position: relative;
-  padding-bottom: 80px;
+.content {
+  min-height: calc(100vh - 150px);
 }
 
 .footer {
-  bottom: 0;
   background: #3C2F2F;
   color: white;
-  width: calc(100% - 4vw);
-  padding: 0.3em 2vw;
+  height: 70px;
   margin-top: 2em;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  padding: 0.3em 2vw;
+  width: calc(100% - 4vw);
 }
 
 .footer ul {
