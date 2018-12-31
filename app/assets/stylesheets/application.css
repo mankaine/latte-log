@@ -14,8 +14,24 @@
  *= require_self
  */
 
+:root {
+  --coffee-with-excessive-milk: #FEFFE7;
+  --coffee-with-milk: #FED2A1;
+  --coffee-lame: #A97953;
+  --coffee-normal: #644431;
+  --coffee-dark: #47362C;
+  --coffee-souless: #32281F;
+  --coffee-red: #A26666;
+}
+
+body {
+  background: var(--coffee-with-excessive-milk);
+  margin: 0;
+  font-family: 'Heebo', sans-serif;
+}
+
 .header .title {
-  color: #3C2F2F;
+  color: var(--coffee-souless);
   font-family: 'Playfair Display', serif;
   font-weight: 900;
   font-size: 4em;
@@ -26,23 +42,45 @@
 }
 
 .header .nav-bar {
-  background: #854442;
+  --edge-padding: 2em;
+  --padding-left: 15em;
+  background: var(--coffee-red);
   border-radius: 5px;
   bottom: 0;
   color: white;
   font-size: 1.25em;
-  margin: 0.3em 2em 0.3em 2em;
-  padding-left: 15em;
+  margin: 0.3em var(--edge-padding);
+  padding-left: var(--padding-left);
   position: relative;
   top: -3.5em;
-  width: calc(100% - 15em - 4em);
+  width: calc(100% - var(--padding-left) - calc(var(--edge-padding) * 2));
   z-index: 0;
 }
 
+
 .header ul {
   list-style-type: none;
+  padding-top: 5px;
+  padding-bottom: 10px;
   padding-left: 0;
   width: 100%;
+}
+
+.header ul li, .footer ul li {
+  display: inline;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.header ul li a {
+  border-bottom: 2px solid var(--coffee-normal);
+  color: white;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.header ul li a:hover {
+  color: var(--coffee-souless);
 }
 
 .content {
@@ -50,12 +88,13 @@
 }
 
 .footer {
-  background: #3C2F2F;
+  --edge-padding: 2vw;
+  background: var(--coffee-souless);
   color: white;
   height: 70px;
   margin-top: 2em;
-  padding: 0.3em 2vw;
-  width: calc(100% - 4vw);
+  padding: 0.3em var(--edge-padding); 
+  width: calc(100% - calc(--edge-padding * 2));
 }
 
 .footer ul {
@@ -64,30 +103,14 @@
   text-align: center;
 }
 
-.footer ul li, .header ul li {
-  display: inline;
-  margin-left: 1vw;
-  margin-right: 1vw;
-}
-
-.header ul li a, .footer ul li a {
-  border-bottom: 1px solid #BE9B7B;
+.footer ul li a {
+  border-bottom: 1px solid var(--coffee-with-milk);
   color: white;
   text-decoration: none;
   transition: 0.2s;
 }
 
-.header ul li a:hover {
-  color: #3C2F2F;
-}
-
 .footer ul li a:hover {
-  color: #BE9B7B;
-}
-
-body {
-  background: #BE9B7B;
-  margin: 0;
-  font-family: 'Heebo', sans-serif;
+  color: var(--coffee-with-milk);
 }
 

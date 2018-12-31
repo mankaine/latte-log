@@ -39,6 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Support JQuery
 gem 'jquery-rails'
 
+# Integrate YouTube API
+gem 'google-api-client', '>0.7'
+
 # Use RSpec for testing 
 gem 'rails-controller-testing'
 gem 'rspec'

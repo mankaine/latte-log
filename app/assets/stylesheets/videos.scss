@@ -2,16 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$coffee-with-too-much-milk: #DFCCAF;
-$coffee-with-milk: #BE9B7B;
-$coffee-normal: #6F4436;
-$coffee-dark: #3C2F2F;
-$coffee-red: #854442;
+$coffee-with-excessive-milk: #FEFFE7;
+$coffee-with-milk: #47362C;
+$cofee-lame: #A97953;
+$coffee-normal: #644431;
+$coffee-dark: #47362C;
+$coffee-souless: #32281F;
+$coffee-red: #A26666;
 
 .page-title {
-  color: $coffee-dark;
+  color: $coffee-souless;
   font-family: 'Playfair Display', serif;
-  margin-left: 1em;
+  margin-left: 0.5em;
   margin-top: 0;
   font-size: 2.5em;
   margin-bottom: -0.5em;
@@ -19,8 +21,9 @@ $coffee-red: #854442;
 
 .videos-container {
   background: $coffee-red;
-  margin-left: 10px;
-  margin-right: 10px;
+  color: $coffee-with-excessive-milk;
+  margin-left: 2.5em;
+  margin-right: 2.5em;
   padding-top: 0.3em;
   padding-left: 1em;
   padding-right: 1em;
@@ -36,8 +39,8 @@ $coffee-red: #854442;
 }
 
 .new-video-button {
-  color: $coffee-dark;
-  background: $coffee-with-too-much-milk;
+  color: $coffee-souless;
+  background: $coffee-with-excessive-milk;
   padding: 0.25em 0.65em;
   font-size: 1.5em;
   border-radius: 50%;
@@ -46,46 +49,43 @@ $coffee-red: #854442;
 }
 
 .new-video-button:hover {
-  color: $coffee-with-too-much-milk;
-  background: $coffee-dark;
+  color: $coffee-with-excessive-milk;
+  background: $coffee-souless;
   transition: 0.2s;
 }
 
 .new-video {
   text-decoration: none;
-  color: white;
+  color: $coffee-with-excessive-milk;
   margin-left: 0.5em;
   margin-top: 5px;
 }
 
 .button {
   border-radius: 5px;
-  color: $coffee-dark;
-  background: $coffee-with-too-much-milk;
+  color: $coffee-souless;
+  background: $coffee-with-excessive-milk;
   padding: 0.5vw;
   transition: 0.3s;
   text-decoration: none;
 }
 
 .button:hover {
-  color: $coffee-with-too-much-milk;
-  background: $coffee-dark;
+  color: $coffee-with-excessive-milk;
+  background: $coffee-souless;
   transition: 0.3s;
-}
-
-.video-link {
 }
 
 .video-notes {
   margin: 1vw;
-  color: white;
+  color: $coffee-with-excessive-milk;
 }
 
 %form-entry {
   border-radius: 5px;
-  border: 2px solid $coffee-with-too-much-milk;
+  border: 2px solid $coffee-with-excessive-milk;
   padding: 10px;
-  color: white;
+  color: $coffee-with-excessive-milk;
   background: rgba(0, 0, 0, 0);
   font-size: 1em;
 }
@@ -103,19 +103,19 @@ $coffee-red: #854442;
 }
 
 .create-video {
-  background: $coffee-with-too-much-milk;
+  background: $coffee-with-excessive-milk;
   border: 0;
   border-radius: 5px;
   font-size: 1em;
-  color: $coffee-dark;
+  color: $coffee-souless;
   margin-bottom: 1em;
   padding: 0.5em 1em;
   transition: 0.2s;
 }
 
 .create-video:hover {
-  background: $coffee-dark;
-  color: $coffee-with-too-much-milk;
+  background: $coffee-souless;
+  color: $coffee-with-excessive-milk;
   transition: 0.2s;
 }
 
