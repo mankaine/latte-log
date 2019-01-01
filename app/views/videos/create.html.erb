@@ -1,10 +1,10 @@
 <h1 class='page-title'>Note New Video</h1>
 <div class='videos-container'>
   <%= form_with model: @video, local: true do |form| %>
-    <p class='video-url-prompt'>
+    <p>
       <%= form.label :video_link %><br />
-      <% if @video.errors.key? 'url' %>
-        <%= "Error: #{@video.errors['url'].first} :(" %><br>
+      <% @video.errors.each do |attr, message| %>
+        <%= "Error: #{message} :(" %>
       <% end %> 
       <%= form.text_field :url, class: 'text-field-form' %><br>
     </p>
