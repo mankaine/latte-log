@@ -31,8 +31,3 @@
 /config/master.key
 
 .vscode
-
-# Ignore local and testing passwords
-/config/environment_variables.rb
-
-dump.rdb

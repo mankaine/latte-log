@@ -33,7 +33,6 @@ body {
 .header {
   display: flex;
   flex-direction: column;
-  margin-top: 2em;
 }
 
 .header .nav-bar {
@@ -52,9 +51,10 @@ body {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
   font-size: 4em;
-  margin-top: -0.75em;
+  margin-top: 0;
   margin-left: -0.25em;
   margin-bottom: 0;
+  position: relative;
   width: 5em;
 }
 

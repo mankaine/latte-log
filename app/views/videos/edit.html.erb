@@ -3,14 +3,12 @@
   <%= form_with model: @video, local: true do |form| %>
     <p>
       <%= form.label :video_link %><br>
-      <% @video.errors.each do |attr, message| %>
-        <%= "Error: #{message} :(" %>
-      <% end %> 
       <%= form.text_field :url, value: @video.url, class: 'text-field-form' %><br>
     </p>
     <p>
       <%= form.label :notes %><br>
-      <%= form.text_area :notes, value: @video.notes, class: 'free-text-entry-form' %><br>
+      <%= form.text_area :notes, value: @video.notes, class:
+'free-text-entry-form' %><br>
     </p>
     <p>
       <%= form.submit 'Save', class: 'create-video' %><br>
