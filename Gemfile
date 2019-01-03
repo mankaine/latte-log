@@ -41,6 +41,7 @@ gem 'jquery-rails'
 
 # Integrate YouTube API
 gem 'google-api-client', '>0.7'
+gem 'omniauth-google-oauth2'
 
 # Use RSpec for testing 
 gem 'rails-controller-testing'

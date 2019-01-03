@@ -51,4 +51,17 @@ class VideosController < ApplicationController
     permitted_params = %i[url notes title]
     params.require(:video).permit(permitted_params)
   end
+
+  private 
+
+  def get_video_title(url)
+    video_title = 'Video'
+
+    youtube_pattern = /youtube\.com/
+    if youtube_pattern.match url
+      video_title = YoutubeClient.new.video_url_to_title('snippet', url)
+    end
+
+    video_title
+  end
 end
