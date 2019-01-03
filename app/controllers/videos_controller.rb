@@ -48,8 +48,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    permitted_params = %i[url notes]
+    permitted_params = %i[url notes title]
     params.require(:video).permit(permitted_params)
   end
 end
-
