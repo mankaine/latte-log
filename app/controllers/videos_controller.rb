@@ -31,7 +31,7 @@ class VideosController < ApplicationController
     if @video.update(video_params)
       redirect_to videos_path 
     else
-      render edit_video_path
+      render new_video_path 
     end 
   end
 

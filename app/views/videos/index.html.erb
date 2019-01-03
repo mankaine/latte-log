@@ -13,6 +13,7 @@
     <%= link_to 'Edit Video', edit_video_path(video), class: 'button edit-link' %>
     <%= link_to 'Delete Video', video_path(video), class: 'button edit-link',
         method: :delete, data: { confirm: 'Are you sure?'} %><br />
+    <p><%= video.title %></p>
     <div class='video-notes'>
       <%= video.notes.gsub(/\r\n/, '<br />').html_safe %>
     </div>
