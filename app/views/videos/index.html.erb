@@ -1,5 +1,5 @@
 <h1 class='page-title'>Videos</h1>
-<div class='videos-container'>
+<div class='videos-page-container'>
   <div class='new-video-container'>
     <div class='circle-container'>
       <div class='circle'></div>
@@ -7,17 +7,30 @@
     </div>
     <%= link_to 'Add Video', new_video_path, class: 'new-video' %>
   </div>
-  <% @videos.each do |video| %>
-    <%= link_to 'Video Link', video.url, target: '_blank',
-        rel: 'noopener noreferrer', class: 'button video-link' %>
-    <%= link_to 'Edit Video', edit_video_path(video), class: 'button edit-link' %>
-    <%= link_to 'Delete Video', video_path(video), class: 'button edit-link',
-        method: :delete, data: { confirm: 'Are you sure?'} %><br />
-    <p><%= video.title %></p>
-    <div class='video-notes'>
-      <%= video.notes.gsub(/\r\n/, '<br />').html_safe %>
-    </div>
-    <br />
-  <% end %>
+  <div>
+    <% @videos.each do |video| %>
+      <div class='video-container'>
+        <p class='video-title'><%= video.title %></p>
+        <% if video.url.include? 'www.youtube.com' %>
+          <div class='video'>
+            <% if video.url.include? 'www.youtube.com' %>
+              <% video_id = video.url.split('v=').last %>
+              <iframe class='video-link' id='player' type='text/html' src=<%= "https://www.youtube.com/embed/#{video_id}" %> frameborder=0 ></iframe>
+            <% end %>
+          </div>
+        <% end %>
+        <div class='video-info-container'>
+          <div class='video-notes'>
+            <%= video.notes.gsub(/\r\n/, '<br />').html_safe %>
+          </div>
+          <div class='button-container'>
+            <%= link_to 'Edit Notes', edit_video_path(video), class: 'button edit-link' %>
+            <%= link_to 'Delete Video', video_path(video), class: 'button edit-link',
+                method: :delete, data: { confirm: 'Are you sure?'} %><br />
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
