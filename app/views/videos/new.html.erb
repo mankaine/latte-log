@@ -16,9 +16,14 @@
       <%= form.label :notes %><br />
       <%= form.text_area :notes, class: 'free-text-entry-form' %><br>
     </p>
-    <p>
-      <%= form.submit 'Save', class: 'create-video' %><br>
-    </p>
+    <div class='new-video-button-container'>
+      <p class='create-video-container'>
+        <%= form.submit 'Save', class: 'create-video' %><br>
+      </p>
+      <p class='cancel-video-container'>
+        <%= link_to 'Cancel', :back, class: 'cancel-video' %><br>
+      </p>
+    </div>
   <% end %>
 </div>
 

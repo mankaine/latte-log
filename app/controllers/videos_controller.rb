@@ -1,4 +1,6 @@
 class VideosController < ApplicationController
+  before_action :redirect_cancel, :only => [:create, :update]
+
   def new
     @video = Video.new
   end 
@@ -43,6 +45,10 @@ class VideosController < ApplicationController
       Video.destroy(params[:id])
       redirect_to videos_path
     end
+  end
+
+  def redirect_cancel
+    redirect_to videos_path if params[:cancel]
   end
 
   private
