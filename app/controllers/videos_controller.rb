@@ -41,7 +41,7 @@ class VideosController < ApplicationController
     if @video&.id == params[:id]
       @video = nil
     end
-    if Video.find(params[:id])
+    if Video.find(params[:id]).present?
       Video.destroy(params[:id])
       redirect_to videos_path
     end

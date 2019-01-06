@@ -24,8 +24,8 @@
             <%= video.notes.gsub(/\r\n/, '<br />').html_safe %>
           </div>
           <div class='button-container'>
-            <%= link_to 'Edit Notes', edit_video_path(video), class: 'button edit-link' %>
-            <%= link_to 'Delete Video', video_path(video), class: 'button edit-link',
+            <%= link_to 'Edit', edit_video_path(video), class: 'button edit-link' %>
+            <%= link_to 'Delete', video_path(video), class: 'button edit-link',
                 method: :delete, data: { confirm: 'Are you sure?'} %><br />
           </div>
         </div>

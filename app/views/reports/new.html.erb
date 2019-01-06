@@ -1,26 +1,25 @@
-<%= form_with scope: :report, url: reports_path, local: true do |form| %>
-  <p>
-    <%= form.label :day %><br>
-    <%= form.text_field :day %><br>
-  </p>
-  <p>
-    <%= form.label :month %><br>
-    <%= form.text_field :month %><br>
-  </p>
-  <p>
-    <%= form.label :year %><br>
-    <%= form.text_field :year %><br>
-  </p>
-  <p>
-    <%= form.label :image_url %><br>
-    <%= form.text_field :image_url %><br>
-  </p>
-  <p>
-    <%= form.label :notes %><br>
-    <%= form.text_field :notes %><br>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
-
+<h1 class='page-title'>Save New Post</h1>
+<div class='videos-page-container'>
+  <%= form_with model: @report, local: true do |form| %>
+    <p>
+      <%= form.label :time_coffee_made %><br>
+      <%= select_date Date.today, { order: [:month, :day, :year] }, { class: 'date-picker' } %>
+    </p>
+    <p>
+      <%= form.label :notes %><br />
+      <%= form.text_area :notes, class: 'free-text-entry-form' %><br>
+    </p>
+    <p>
+      <%= form.hidden_field :picture_cache %>
+      <%= form.file_field :picture %>
+    </p>
+    <div class='new-video-button-container'>
+      <p class='create-video-container'>
+        <%= form.submit 'Save', class: 'create-video' %><br>
+      </p>
+      <p class='cancel-video-container'>
+        <%= link_to 'Cancel', :back, class: 'cancel-video' %><br>
+      </p>
+    </div>
+  <% end %>
+</div>
