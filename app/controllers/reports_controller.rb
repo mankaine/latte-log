@@ -4,7 +4,6 @@ class ReportsController < ApplicationController
   end
 
   def create
-    Rails.logger.debug report_params.inspect
     @report = Report.new
     @report.notes = report_params[:notes]
     @report.coffee_made_at = Time.new(
