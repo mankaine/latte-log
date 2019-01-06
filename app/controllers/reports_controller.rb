@@ -53,7 +53,9 @@ class ReportsController < ApplicationController
     if @report&.id == params[:id]
       @report = nil
     end
-    if Report.find(params[:id]).present?
+    report = Report.find(params[:id])
+    if report.present?
+      report.picture.file.delete
       Report.delete(params[:id])
       redirect_to reports_path
     end
