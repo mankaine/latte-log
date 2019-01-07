@@ -8,17 +8,23 @@
     <%= link_to 'Add Post', new_report_path, class: 'new-video' %>
   </div>
   <div>
-    <% @reports.each do |report| %>
-      <div class='video-container'>
-        <%= report.coffee_made_at %>
-        <%= report.notes.gsub(/\r\n/, '<br />').html_safe %>
-        <%= cl_image_tag report.picture.filename , :width => 100, :height => 150, :crop => :fill %>
+    <% group_by_year.each do |year, reports| %>
+      <div class='year-container'>
+        <p class='year'><%= year %></p>
+        <div class='reports-container'>
+          <% reports.each do |report| %>
+            <div class='report-container'>
+              <div class='photo-container'>
+                <p class='date'><%= report.coffee_made_at.strftime('%-m/%-d')%></p>
+                <%= cl_image_tag(report.picture.url(:index_view) , :class => 'picture') %>
+              </div>
+              <%= link_to 'Edit', edit_report_path(report), class: 'button edit-link' %>
+              <%= link_to 'Delete', report_path(report), class: 'button edit-link',
+                  method: :delete, data: { confirm: 'Are you sure?'} %><br />
+            </div>
+          <% end %>
+        </div>
       </div>
-      <%= link_to 'Edit', edit_report_path(report), class: 'button edit-link' %>
-      <%= link_to 'Delete', report_path(report), class: 'button edit-link',
-          method: :delete, data: { confirm: 'Are you sure?'} %><br />
     <% end %>
-      </div>
-    </div>
   </div>
 </div>

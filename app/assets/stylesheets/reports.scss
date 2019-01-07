@@ -2,7 +2,87 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$image-height: 350px;
+$button-buffer: 100px;
+$image-width: calc(#{$image-height} * 3 / 4);
+
 .date-picker {
   font-size: 1em;
   font-family: 'Heebo', sans-serif;
+}
+
+.year-container {
+  .year {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .reports-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .report-container {
+      $margin-right: 1em;
+      height: calc(#{$image-height} + #{$button-buffer});
+      margin-right: $margin-right;
+      flex-basis: calc(#{$image-width} + #{$margin-right});
+      max-width: $image-width;
+
+      .photo-container {
+        height: $image-height;
+        margin-bottom: 25px;
+        // Required for absolute positioning in .date and .picture to be pegged to this class
+        position: relative;
+      }
+
+      .photo-container {
+        .date {
+          position: absolute;
+          z-index: 1;
+          margin: 0;
+          left: calc(#{$image-width} - 1em);
+          bottom: calc(#{$image-height} - 0.75em);
+          font-size: 1.25em;
+          font-weight: 700;
+        }
+      }
+
+      .photo-container .picture {
+        position: absolute;
+        z-index: 0;
+        height: $image-height;
+        width: $image-width;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.videos-page-container {
+  .report-edit-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .report-picture {
+      flex-basis: $image-width;
+      margin-right: 2em;
+    }
+
+    .report-notes {
+      flex-basis: calc(97% - #{$image-width} - 2em);
+
+      p {
+        margin-top: 0;
+      }
+    }
+
+    @media only screen and (max-width: 730px) {
+      .report-notes {
+        flex-basis: 100%;
+      }
+    }
+  }
 }

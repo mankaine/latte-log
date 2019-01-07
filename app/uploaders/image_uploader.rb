@@ -13,6 +13,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   process :convert => 'jpg'
 
+  version :index_view do
+    height = 350
+    process resize_to_fit: [height, height * 3 / 4]
+  end
+
+  version :edit_view do
+    height = 500
+    process resize_to_fit: [height, height * 3 / 4]
+  end
+
   # White list of extensions which are allowed to be uploaded.
   def extension_whitelist
      %w(jpg)

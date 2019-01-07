@@ -6,12 +6,12 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new
     @report.notes = report_params[:notes]
+    @report.picture = report_params[:picture]
     @report.coffee_made_at = Time.new(
       report_params[:year],
       report_params[:month],
       report_params[:day]
     )
-    @report.picture = report_params[:picture]
 
     image_path = @report.picture.store_path @report.picture.filename
     @report.picture.store! image_path
@@ -29,13 +29,16 @@ class ReportsController < ApplicationController
 
   def update
     @report = Report.find(params[:id])
-    @report.picture = report_params[:file]
+    @report.picture = report_params[:picture]
     @report.notes = report_params[:notes]
     @report.coffee_made_at = Time.new(
       report_params[:year],
       report_params[:month],
       report_params[:day]
     )
+
+    image_path = @report.picture.store_path @report.picture.filename
+    @report.picture.store! image_path
 
     if @report.save
       redirect_to reports_path
@@ -59,6 +62,15 @@ class ReportsController < ApplicationController
       redirect_to reports_path
     end
   end
+
+  def group_by_year
+    sorted_reports = @reports.order(coffee_made_at: :desc)
+    sorted_reports.each_with_object(Hash.new { |h, k| h[k] = Array.new } ) do |report, hash|
+      year = report.coffee_made_at.strftime('%Y')
+      hash[year].push(report)
+    end
+  end
+  helper_method :group_by_year
 
   private
 
