@@ -36,3 +36,6 @@
 
 # Ignore upload directories
 /public/uploads/*
+
+# Ignore SimpleCov files
+coverage

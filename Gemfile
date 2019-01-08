@@ -50,6 +50,9 @@ gem 'rspec-expectations'
 gem 'rspec-mocks'
 gem 'rspec-rails'
 
+# Test code coverage
+gem 'simplecov', require: false, group: :test
+
 # Enable image uploads and viewing via Cloudinary
 gem 'carrierwave'
 gem 'cloudinary'
