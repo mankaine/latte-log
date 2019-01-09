@@ -52,19 +52,24 @@ class ReportsController < ApplicationController
   end
 
   def destroy
-    if @report&.id == params[:id]
+    if @report&.id == params[:id].to_i
       @report = nil
     end
+
     report = Report.find(params[:id])
     if report.present?
-      report.picture.file.delete
+      report.picture.file&.delete
       Report.delete(params[:id])
       redirect_to reports_path
     end
   end
 
   def group_by_year
-    sorted_reports = @reports.order(coffee_made_at: :desc)
+    sorted_reports = Report.order(coffee_made_at: :desc)
+    if sorted_reports.nil?
+      return Hash.new
+    end
+
     sorted_reports.each_with_object(Hash.new { |h, k| h[k] = Array.new } ) do |report, hash|
       year = report.coffee_made_at.strftime('%Y')
       hash[year].push(report)

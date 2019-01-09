@@ -3,7 +3,7 @@
   <%= form_with model: @report, local: true do |form| %>
     <p>
       <%= form.label :time_coffee_made %><br>
-      <%= select_date Date.today, { order: [:month, :day, :year] }, { class: 'date-picker' } %>
+      <%= select_date @report.coffee_made_at, { order: [:month, :day, :year] }, { class: 'date-picker' } %>
     </p>
     <div class='report-edit-container'>
       <div class='report-picture'>
