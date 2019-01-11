@@ -14,13 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require cloudinary
+//= require prep_cloudinary_file_upload
+//= require prepend_bullet_points
 //= require_tree .
-
-$(document).ready(function() {
-  $(function() {
-    if($.fn.cloudinary_fileupload !== undefined) {
-      const fileUploadInput = 'input.cloudinary-fileupload[type=file]'
-      $(fileUploadInput).cloudinary_fileupload()
-    }
-  })
-})

@@ -52,7 +52,7 @@ $report-container-width: calc((#{$image-width} * 2) + 10px);
           top: -0.75em;
           font-size: 1.25em;
           font-weight: 700;
-          color: $coffee-souless;
+          color: black;
         }
 
         .picture {
@@ -67,12 +67,16 @@ $report-container-width: calc((#{$image-width} * 2) + 10px);
       @media screen and (max-width: 690px) {
         .photo-container {
           flex: 100%;
+          width: 100%;
+          height: calc((100vw - 9.1em) * 4 / 3);
 
           .date {
-            left: calc(#{$image-width} - 1em);
+            left: calc(100% - 1em);
           }
 
           .picture {
+            width: 100%;
+            height: auto;
             border-top-left-radius: 10px;
             border-bottom-left-radius: 0px;
             border-top-right-radius: 10px;
@@ -98,7 +102,7 @@ $report-container-width: calc((#{$image-width} * 2) + 10px);
 
       @media screen and (max-width: 690px) {
         .notes-container {
-          width: calc(#{$image-width} - 1em);
+          width: calc(100% - 1em);
           border-top-right-radius: 0px;
           border-bottom-right-radius: 10px;
           border-bottom-left-radius: 10px;
@@ -108,7 +112,7 @@ $report-container-width: calc((#{$image-width} * 2) + 10px);
 
     @media screen and (max-width: 690px) {
       .report-container {
-        width: $image-width;
+        width: 100%;
         flex-direction: row;
       }
     }
