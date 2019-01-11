@@ -18,9 +18,12 @@
                 <p class='date'><%= report.coffee_made_at.strftime('%-m/%-d')%></p>
                 <%= cl_image_tag(report.picture.url(:index_view) , :class => 'picture') %>
               </div>
-              <%= link_to 'Edit', edit_report_path(report), class: 'button edit-link' %>
-              <%= link_to 'Delete', report_path(report), class: 'button edit-link',
-                  method: :delete, data: { confirm: 'Are you sure?'} %><br />
+              <div class='notes-container'>
+                <p class='notes'><%= report.notes %></p>
+                <%= link_to 'Edit', edit_report_path(report), class: 'button edit-link' %>
+                <%= link_to 'Delete', report_path(report), class: 'button edit-link',
+                    method: :delete, data: { confirm: 'Are you sure?'} %><br />
+              </div>
             </div>
           <% end %>
         </div>

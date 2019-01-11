@@ -2,9 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'videos.scss';
+
 $image-height: 350px;
 $button-buffer: 100px;
 $image-width: calc(#{$image-height} * 3 / 4);
+$report-container-width: calc((#{$image-width} * 2) + 10px);
 
 .date-picker {
   font-size: 1em;
@@ -25,36 +28,88 @@ $image-width: calc(#{$image-height} * 3 / 4);
 
     .report-container {
       $margin-right: 1em;
-      height: calc(#{$image-height} + #{$button-buffer});
-      margin-right: $margin-right;
-      flex-basis: calc(#{$image-width} + #{$margin-right});
-      max-width: $image-width;
+      margin: 1em $margin-right;
+      width: $report-container-width;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      border-radius: 10px;
+      box-shadow: 5px 5px 20px 0px rgb(19, 17, 17);
 
       .photo-container {
         height: $image-height;
-        margin-bottom: 25px;
+        width: $image-width;
         // Required for absolute positioning in .date and .picture to be pegged to this class
         position: relative;
-      }
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
 
-      .photo-container {
         .date {
           position: absolute;
           z-index: 1;
           margin: 0;
-          left: calc(#{$image-width} - 1em);
-          bottom: calc(#{$image-height} - 0.75em);
+          left: calc(#{$report-container-width} - 1em);
+          top: -0.75em;
           font-size: 1.25em;
           font-weight: 700;
+          color: $coffee-souless;
+        }
+
+        .picture {
+          z-index: 0;
+          height: $image-height;
+          width: $image-width;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
         }
       }
 
-      .photo-container .picture {
-        position: absolute;
-        z-index: 0;
+      @media screen and (max-width: 690px) {
+        .photo-container {
+          flex: 100%;
+
+          .date {
+            left: calc(#{$image-width} - 1em);
+          }
+
+          .picture {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 0px;
+            border-top-right-radius: 10px;
+          }
+        }
+      }
+
+      .notes-container {
+        color: black;
+        background: $coffee-with-excessive-milk;
+        margin: 0;
+        padding: 0 10px;
         height: $image-height;
+        width: calc(#{$image-width} - 10px);
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        overflow: scroll;
+
+        .button {
+          border: 1px solid $coffee-souless;
+        }
+      }
+
+      @media screen and (max-width: 690px) {
+        .notes-container {
+          width: calc(#{$image-width} - 1em);
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 10px;
+          border-bottom-left-radius: 10px;
+        }
+      }
+    }
+
+    @media screen and (max-width: 690px) {
+      .report-container {
         width: $image-width;
-        border-radius: 5px;
+        flex-direction: row;
       }
     }
   }

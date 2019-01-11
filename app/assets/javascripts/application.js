@@ -16,12 +16,11 @@
 //= require cloudinary
 //= require_tree .
 
-var idx = Math.floor((new Date().getHours()));
-var body = document.getElementsByTagName("body")[0];
-body.className = "heaven-" + idx;
-
-$(function() {
-  if($.fn.cloudinary_fileupload !== undefined) {
-    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
-  }
-});
+$(document).ready(function() {
+  $(function() {
+    if($.fn.cloudinary_fileupload !== undefined) {
+      const fileUploadInput = 'input.cloudinary-fileupload[type=file]'
+      $(fileUploadInput).cloudinary_fileupload()
+    }
+  })
+})
