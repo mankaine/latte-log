@@ -33,7 +33,7 @@ RSpec.describe ImageUploader do
 
     it 'should generate different IDs for different files' do
       time1 = uploader1.public_id
-      sleep 5.seconds # Required, as uploader ID is time based
+      sleep 2.seconds # Required, as uploader ID is time based
       time2 = uploader2.public_id
       expect(time1).not_to eq(time2)
     end

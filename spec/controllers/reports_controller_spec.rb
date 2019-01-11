@@ -22,19 +22,15 @@ RSpec.describe ReportsController, :type => :controller do
   end
 
   describe 'POST create' do
-    let(:expected_report) { FactoryBot.build(:report) }
-    let(:report_params) do
-      FactoryBot.build(
-        :report_request,
-        notes: expected_report.notes,
-      ).stringify_keys
-    end
+    let(:expected_notes) { Faker::Lorem.sentence 2 }
+    let(:report_params) { FactoryBot.build(:report_request, notes: expected_notes).stringify_keys }
     let(:expected_day) { FactoryBot.build(:date_request).stringify_keys }
     let(:expected_time) { Time.new(expected_day['year'], expected_day['month'], expected_day['day']) }
+
     it 'should save the created Report' do
       post :create, :params => { :report => report_params, date: expected_day }
       
-      expect(assigns(:report).notes).to eq expected_report.notes
+      expect(assigns(:report).notes).to eq expected_notes
       expect(assigns(:report).coffee_made_at).to eq expected_time
     end
 
@@ -47,6 +43,7 @@ RSpec.describe ReportsController, :type => :controller do
     it 'should retrieve the requested Report' do
       report = FactoryBot.create(:report)
       get :edit, :params => { :id => report.id }
+
       expect(assigns(:report)).to eq report
     end
   end

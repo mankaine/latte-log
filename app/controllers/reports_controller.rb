@@ -16,11 +16,8 @@ class ReportsController < ApplicationController
     image_path = @report.picture.store_path @report.picture.filename
     @report.picture.store! image_path
 
-    if @report.save
-      redirect_to reports_path
-    else
-      render new_report_path
-    end
+    @report.save
+    redirect_to reports_path
   end
 
   def edit
@@ -40,11 +37,8 @@ class ReportsController < ApplicationController
     image_path = @report.picture.store_path @report.picture.filename
     @report.picture.store! image_path
 
-    if @report.save
-      redirect_to reports_path
-    else
-      render edit_report_path
-    end
+    @report.save
+    redirect_to reports_path
   end
 
   def index

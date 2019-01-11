@@ -15,7 +15,7 @@ class VideosController < ApplicationController
     if @video.save
       redirect_to videos_path 
     else
-      render new_video_path 
+      render new_video_path
     end
   end
 
@@ -38,7 +38,7 @@ class VideosController < ApplicationController
   end
 
   def destroy
-    if @video&.id == params[:id]
+    if @video&.id == params[:id].to_i
       @video = nil
     end
     if Video.find(params[:id]).present?

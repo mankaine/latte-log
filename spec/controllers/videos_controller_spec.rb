@@ -18,9 +18,19 @@ RSpec.describe VideosController, type: :controller do
         notes: expected_video.notes
       ).stringify_keys
     end
+    context 'with invalid Video input' do
+      let(:subject) { post :create, :params => { :video => video_params } }
+      let(:invalid) { Faker::Lorem.sentence 1 }
+      let(:video_params) { FactoryBot.build(:video_request, url: invalid).stringify_keys }
+      it 'should reject' do
+        expect(Video.count).to eq(0)
+      end
+      it 'should invoke render of Video page' do
+        expect(subject).to render_template :new
+      end
+    end
     it 'should save the Video' do
-      post :create, :params => { :video => video_params }
-
+      post :create, :params => { :video => video_params } 
       expect(assigns(:video).notes).to eq expected_video.notes
       expect(assigns(:video).url).to eq expected_video.url
     end
@@ -53,41 +63,75 @@ RSpec.describe VideosController, type: :controller do
   end
 
   describe 'PATCH update' do
-    it 'should update the Video' do
-      video = FactoryBot.create(:video)
+    let(:video) { FactoryBot.create(:video) }
+    
+    context 'with invalid URL entry' do
+      let(:subject) { patch :update, :params => { id: "#{video.id}", :video => video_params } }
+      let(:invalid) { Faker::Lorem.sentence 1 }
+      let(:video_params) { FactoryBot.build(:video_request, url: invalid).stringify_keys }
 
-      video_param = video.as_json
+      it 'should reject and invoke the Video creation page' do
+        subject
+        expect(Video.count).to eq(1)
+        expect(Video.first).not_to have_attributes(url: invalid)
+      end
+      it 'should call to redirect to Video creation page' do
+        expect(subject).to render_template :new
+      end
+    end
+
+    it 'should update the Video' do
+      video_params = video.as_json
       expected_video_url = Faker::Internet.url
-      video_param['url'] = expected_video_url
-      patch :update, :params => { id: "#{video.id}", :video => video_param }
+      video_params['url'] = expected_video_url
+      patch :update, :params => { id: "#{video.id}", :video => video_params } 
 
       expect(assigns(:video)).to have_attributes(
-        url: video_param['url'],
-        notes: video_param['notes']
+        url: video_params['url'],
+        notes: video_params['notes']
       )
     end
   end
 
   describe 'PUT update' do
-    it 'should update the Video' do
-      video = FactoryBot.create(:video)
+    let(:video) { FactoryBot.create(:video) }
 
-      video_param = video.as_json
+    context 'with invalid URL entry' do
+      let(:subject) { put :update, :params => { id: "#{video.id}", :video => video_params } }
+      let(:invalid) { Faker::Lorem.sentence 1 }
+      let(:video_params) { FactoryBot.build(:video_request, url: invalid).stringify_keys }
+
+      it 'should reject and invoke the Video creation page' do
+        subject
+        expect(Video.count).to eq(1)
+        expect(Video.first).not_to have_attributes(url: invalid)
+      end
+      it 'should call to redirect to Video creation page' do
+        expect(subject).to render_template :new
+      end
+    end
+
+    it 'should update the Video' do
+      video_params = video.as_json
       expected_video_url = Faker::Internet.url
-      video_param['url'] = expected_video_url
-      put :update, :params => { id: "#{video.id}", :video => video_param }
+      video_params['url'] = expected_video_url
+      put :update, :params => { id: "#{video.id}", :video => video_params } 
 
       expect(assigns(:video)).to have_attributes(
-        url: video_param['url'],
-        notes: video_param['notes']
+        url: video_params['url'],
+        notes: video_params['notes']
       )
     end
   end
 
   describe 'DELETE destroy' do
     it 'should delete the Video' do
-      video = FactoryBot.create(:video)
-      delete :destroy, :params => { id: "#{video.id}" }
+      video_params = FactoryBot.build(:video_request).stringify_keys
+      post :create, :params => { :video => video_params }
+      expect(assigns(:video).url).to eq video_params['url']
+      expect(assigns(:video).notes).to eq video_params['notes']
+
+      delete :destroy, :params => { id: "#{assigns(:video).id}" }
   
       expect(Video.count).to eq 0
     end
