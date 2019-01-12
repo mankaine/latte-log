@@ -11,9 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require turbolinks
 //= require cloudinary
 //= require prep_cloudinary_file_upload
 //= require prepend_bullet_points
-//= require_tree .
+//= require jquery_ujs
