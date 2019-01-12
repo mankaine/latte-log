@@ -13,8 +13,17 @@
       <%= form.label :notes %><br>
       <%= form.text_area :notes, value: @video.notes, class: 'free-text-entry-form' %><br>
     </p>
-    <p>
-      <%= form.submit 'Save', class: 'create-video' %><br>
-    </p>
+    <div class='new-button-container'>
+      <p class='create-button-container'>
+        <%= form.submit 'Save', class: 'create-button' %><br>
+      </p>
+      <p class='cancel-button-container'>
+        <%= link_to 'Cancel', :back, class: 'cancel-button' %><br>
+      </p>
+      <p class='delete-button-container'>
+        <%= link_to 'Delete', video_path(@video), class: 'delete-button',
+            method: :delete, data: { confirm: 'Are you sure?'} %><br />
+      </p>
+    </div>
   <% end %>
 </div>

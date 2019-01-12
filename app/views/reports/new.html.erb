@@ -13,12 +13,12 @@
       <%= form.hidden_field :picture_cache %>
       <%= form.file_field :picture %>
     </p>
-    <div class='new-video-button-container'>
-      <p class='create-video-container'>
-        <%= form.submit 'Save', class: 'create-video' %><br>
+    <div class='new-button-container'>
+      <p class='create-button-container'>
+        <%= form.submit 'Save', class: 'create-button' %><br>
       </p>
-      <p class='cancel-video-container'>
-        <%= link_to 'Cancel', :back, class: 'cancel-video' %><br>
+      <p class='cancel-button-container'>
+        <%= link_to 'Cancel', :back, class: 'cancel-button' %><br>
       </p>
     </div>
   <% end %>
