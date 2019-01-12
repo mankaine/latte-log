@@ -1,5 +1,7 @@
 {
   "name": "latte-log",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "exif-js": "^2.3.0"
+  }
 }
