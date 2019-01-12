@@ -9,12 +9,14 @@
       <div class='report-picture'>
         <% if @report.picture.file.present? %>
             <%= cl_image_tag(@report.picture.url(:edit_view) , :class => 'picture') %>
-        <% else %>
-          <p>
-            <%= form.hidden_field :picture_cache %>
-            <%= form.file_field :picture %>
-          </p>
         <% end %>
+        <p>
+          <%= form.label :picture, 'Upload New Image' %><br />
+          <%= form.hidden_field :picture_cache %>
+          <%= form.file_field :picture, { accept: 'image/*', onchange: 'onImageUpload(this)' } %>
+        </p>
+        <div class='preview'>
+        </div>
       </div>
       <div class='report-notes'>
         <p>

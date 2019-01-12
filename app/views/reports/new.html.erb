@@ -5,14 +5,27 @@
       <%= form.label :time_coffee_made %><br>
       <%= select_date Date.today, { order: [:month, :day, :year] }, { class: 'date-picker' } %>
     </p>
+    <div class='report-edit-container'>
+      <div class='report-picture'>
+        <% if @report.picture.file.present? %>
+            <%= cl_image_tag(@report.picture.url(:edit_view) , :class => 'picture') %>
+        <% end %>
+        <p>
+          <%= form.label :picture, 'Upload New Image' %><br />
+          <%= form.hidden_field :picture_cache %>
+          <%= form.file_field :picture, options = { accept: 'image/*', onchange: 'onImageUpload(this)' } %>
+        </p>
+        <div class='preview'>
+        </div>
+      </div>
+      <div class='report-notes'>
+        <p>
+          <%= form.label :notes %><br />
+          <%= form.text_area :notes, class: 'free-text-entry-form' %><br>
+        </p>
+      </div>
+    </div>
     <p>
-      <%= form.label :notes %><br />
-      <%= form.text_area :notes, class: 'free-text-entry-form' %><br>
-    </p>
-    <p>
-      <%= form.hidden_field :picture_cache %>
-      <%= form.file_field :picture %>
-    </p>
     <div class='new-button-container'>
       <p class='create-button-container'>
         <%= form.submit 'Save', class: 'create-button' %><br>

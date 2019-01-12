@@ -15,4 +15,5 @@
 //= require cloudinary
 //= require prep_cloudinary_file_upload
 //= require prepend_bullet_points
+//= require uploaded_picture_viewer 
 //= require jquery_ujs
