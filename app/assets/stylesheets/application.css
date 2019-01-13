@@ -25,7 +25,7 @@
 }
 
 body {
-  background: var(--coffee-with-excessive-milk);
+  background-image: linear-gradient(to right bottom, #d8cdc5, #e4d9cd, #eee5d5, #f7f2dd, #feffe7);
   margin: 0;
   font-family: 'Heebo', sans-serif;
 }
@@ -45,6 +45,7 @@ body {
   font-size: 1.25em;
   margin: 2em var(--edge-padding);
   width: calc(100% - calc(var(--edge-padding) * 2));
+  box-shadow: 10px 10px 15px 5px gray;
 }
 
 .header .nav-bar .title {

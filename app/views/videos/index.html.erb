@@ -10,7 +10,6 @@
   <div>
     <% @videos.each do |video| %>
       <div class='video-container'>
-        <p class='video-title'><%= video.title %></p>
         <% if video.url.include? 'www.youtube.com' %>
           <div class='video'>
             <% if video.url.include? 'www.youtube.com' %>
@@ -21,6 +20,7 @@
         <% end %>
         <div class='video-info-container'>
           <div class='video-notes'>
+            <p class='video-title'><%= video.title %></p>
             <%= video.notes.gsub(/\r\n/, '<br />').html_safe %>
           </div>
           <div class='button-container'>

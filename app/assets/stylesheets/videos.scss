@@ -29,15 +29,27 @@ $coffee-red: #A26666;
   padding-right: 1em;
   padding-bottom: 0.5em;
   border-radius: 10px;
+  box-shadow: 10px 10px 15px 5px gray;
 }
 
 .video-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  border-radius: 10px;
+  margin-bottom: 3em;
+  background: $coffee-with-excessive-milk;
+  box-shadow: 5px 5px 20px 0px #3b3434;
 }
 
 .new-video-container {
+  margin: 2em 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.new-report-container {
   margin: 2em 0;
   display: flex;
   flex-direction: row;
@@ -76,6 +88,7 @@ $coffee-red: #A26666;
   border-radius: 5px;
   color: $coffee-souless;
   background: $coffee-with-excessive-milk;
+  border: 1px solid $coffee-souless;
   padding: 0.5vw;
   transition: 0.3s;
   text-decoration: none;
@@ -91,10 +104,16 @@ $coffee-red: #A26666;
   font-size: 1.25em;
   font-weight: bold;
   flex-basis: 100%;
+  margin: 0;
+  color: black;
+  margin-bottom: 0.5em;
 }
 
 .video {
   flex-basis: 50%;
+  background: black;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 @media only screen and (max-width: 560px) {
@@ -104,14 +123,17 @@ $coffee-red: #A26666;
 }
 
 .video-link {
-  --width: 45vw; 
+  --width: 100%; 
   width: var(--width);
-  height: calc(var(--width) * 9 / 16);
+  height: calc(45vw * 9 / 16);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 @media only screen and (max-width: 1120px) {
   .video {
     flex-basis: 30%;
+
   }
   .video-link {
     --app-margin: 80px; 
@@ -123,12 +145,21 @@ $coffee-red: #A26666;
 }
 
 @media only screen and (max-width: 680px) {
+  .video { 
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+  }
+
   .video-link {
     --app-margin: 80px; 
     --video-margin: 32px;
     --width: calc(100vw - var(--app-margin) - var(--video-margin));
     width: var(--width);
     height: calc(var(--width) * 9 / 16);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
   }
 }
 .video-info-container {
@@ -143,7 +174,7 @@ $coffee-red: #A26666;
 
 .video-notes {
   margin: 1vw;
-  color: $coffee-with-excessive-milk;
+  color: $coffee-souless;
 }
 
 %form-entry {

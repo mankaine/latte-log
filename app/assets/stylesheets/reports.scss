@@ -120,6 +120,8 @@ $report-container-width: calc((#{$image-width} * 2) + 10px);
 }
 
 .videos-page-container {
+  box-shadow: 10px 10px 15px 5px gray;
+
   .report-edit-container {
     display: flex;
     flex-direction: row;
