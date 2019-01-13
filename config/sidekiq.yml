@@ -1,0 +1,3 @@
+:queues:
+  - [carrierwave, 1]
+  - default
