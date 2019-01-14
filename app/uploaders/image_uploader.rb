@@ -10,6 +10,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/report-images/#{public_id}"
   end
 
+  def cache_dir
+    "#{Rails.root}/tmp/uploads"
+  end
+
   # Process files as they are uploaded:
   process :convert => 'jpg'
 
@@ -30,5 +34,9 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def public_id 
     @public_id ||= Time.now.strftime '%Y%m%d%H%M%S'
+  end
+
+  def filename
+    public_id
   end
 end

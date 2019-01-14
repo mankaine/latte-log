@@ -56,6 +56,7 @@ gem 'simplecov', require: false, group: :test
 # Enable image uploads and viewing via Cloudinary
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'sidekiq'
 
 # Enable image resizing
 gem 'mini_magick'

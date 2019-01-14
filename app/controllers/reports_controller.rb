@@ -6,17 +6,18 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new
     @report.notes = report_params[:notes]
-    @report.picture = report_params[:picture]
     @report.coffee_made_at = Time.new(
       report_params[:year],
       report_params[:month],
       report_params[:day]
     )
-
-    image_path = @report.picture.store_path @report.picture.filename
-    @report.picture.store! image_path
-
+    @report.picture = report_params[:picture]
+    cache_id = @report.picture.versions[:index_view].parent_cache_id
+    original_name = @report.picture.file.original_filename
+    ImageUploaderWorker.perform_async(cache_id, original_name)
+    @report.picture = nil
     @report.save
+
     redirect_to reports_path
   end
 
