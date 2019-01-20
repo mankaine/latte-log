@@ -12,10 +12,6 @@ class ReportsController < ApplicationController
       report_params[:month],
       report_params[:day]
     )
-
-    image_path = @report.picture.store_path @report.picture.filename
-    @report.picture.store! image_path
-
     @report.save
     redirect_to reports_path
   end
@@ -33,10 +29,6 @@ class ReportsController < ApplicationController
       report_params[:month],
       report_params[:day]
     )
-
-    image_path = @report.picture.store_path @report.picture.filename
-    @report.picture.store! image_path
-
     @report.save
     redirect_to reports_path
   end
@@ -46,30 +38,12 @@ class ReportsController < ApplicationController
   end
 
   def destroy
-    if @report&.id == params[:id].to_i
-      @report = nil
-    end
+    @report = Report.find(params[:id])
+    @report.destroy
+    @report = nil
 
-    report = Report.find(params[:id])
-    if report.present?
-      report.picture.file&.delete
-      Report.delete(params[:id])
-      redirect_to reports_path
-    end
+    redirect_to reports_path
   end
-
-  def group_by_year
-    sorted_reports = Report.order(coffee_made_at: :desc)
-    if sorted_reports.nil?
-      return Hash.new
-    end
-
-    sorted_reports.each_with_object(Hash.new { |h, k| h[k] = Array.new } ) do |report, hash|
-      year = report.coffee_made_at.strftime('%Y')
-      hash[year].push(report)
-    end
-  end
-  helper_method :group_by_year
 
   private
 
@@ -81,4 +55,5 @@ class ReportsController < ApplicationController
     date = date_params.permit(permitted_params)
     notes_and_picture.merge(date.to_h)
   end
+
 end

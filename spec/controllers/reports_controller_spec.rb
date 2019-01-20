@@ -78,38 +78,4 @@ RSpec.describe ReportsController, :type => :controller do
       expect(assigns(:report).coffee_made_at).to eq report.coffee_made_at
     end
   end
-
-  describe '#group_by_year' do
-    context 'given no reports' do
-      it 'should return an empty Hash' do
-        expect(subject.group_by_year).to eq(Hash.new)
-      end
-    end
-
-    context 'given some reports' do
-      let(:report_params1) { FactoryBot.build(:report_request).stringify_keys }
-      let(:report_params2) { FactoryBot.build(:report_request).stringify_keys }
-      let(:report_params3) { FactoryBot.build(:report_request).stringify_keys }
-      let(:date1) { {'year' => 2018, 'month' => 1, 'day' => 1} }
-      let(:date2) { {'year' => 2017, 'month' => 1, 'day' => 1} }
-      let(:date3) { {'year' => 2018, 'month' => 2, 'day' => 1} }
-
-      it 'should order by year and month, descending' do
-        post :create, :params => { :report => report_params1, date: date1 }
-        post :create, :params => { :report => report_params2, date: date2 }
-        post :create, :params => { :report => report_params3, date: date3 }
-
-        expected_ordering = { 
-          '2018' => [
-            Report.find_by(coffee_made_at: Time.new(2018, 2, 1)),
-            Report.find_by(coffee_made_at: Time.new(2018, 1, 1))
-          ],
-          '2017' => [
-            Report.find_by(coffee_made_at: Time.new(2017, 1, 1))
-          ],
-        }
-        expect(subject.group_by_year).to eq(expected_ordering)
-      end
-    end
-  end
 end

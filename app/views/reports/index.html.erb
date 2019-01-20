@@ -8,7 +8,7 @@
     <%= link_to 'Add Post', new_report_path, class: 'new-video' %>
   </div>
   <div>
-    <% group_by_year.each do |year, reports| %>
+    <% Report.group_by_year.each do |year, reports| %>
       <div class='year-container'>
         <p class='year'><%= year %></p>
         <div class='reports-container'>

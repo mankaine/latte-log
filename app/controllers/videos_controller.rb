@@ -38,13 +38,11 @@ class VideosController < ApplicationController
   end
 
   def destroy
-    if @video&.id == params[:id].to_i
-      @video = nil
-    end
-    if Video.find(params[:id]).present?
-      Video.destroy(params[:id])
-      redirect_to videos_path
-    end
+    @video = Video.find(params[:id])
+    @video.destroy
+    @video = nil
+
+    redirect_to reports_path
   end
 
   def redirect_cancel
