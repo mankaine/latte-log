@@ -1,10 +1,12 @@
+require 'image_optimizer'
+
 class ReportsController < ApplicationController
   def new
     @report = Report.new
   end
 
   def create
-    @report = Report.new
+    @report = Report.create
     @report.notes = report_params[:notes]
     @report.picture = report_params[:picture]
     @report.coffee_made_at = Time.new(
@@ -12,6 +14,13 @@ class ReportsController < ApplicationController
       report_params[:month],
       report_params[:day]
     )
+    ImageOptimizer.new(@report.picture.file.file, quality: 40).optimize
+
+    t1 = Time.now
+    image_path = @report.picture.store_path @report.picture.filename
+    @report.picture.store! image_path
+    t2 = Time.now
+    Rails.logger.info "Time to upload image to Cloudinary: #{t2 - t1} seconds"
     @report.save
     redirect_to reports_path
   end

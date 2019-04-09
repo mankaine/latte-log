@@ -1,16 +1,15 @@
-class HashArray < Hash
-  attr_accessor :collection
+class HashArray
+  extend Forwardable
+  attr_reader :hash
+  
+  def_delegator :@hash, :[], :[]
 
   def initialize
-    @collection = Hash.new
-  end
-
-  def [](key)
-    @collection[key]
+    @hash = Hash.new
   end
 
   def push(key, value)
-    @collection[key] = Array.new unless @collection.key? key
-    @collection[key].push(value)
+    @hash[key] = Array.new unless @hash.key? key
+    @hash[key].push(value)
   end
 end

@@ -135,6 +135,7 @@ GEM
     i18n (1.5.2)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
+    image_optimizer (1.8.0)
     io-like (0.3.0)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
@@ -336,6 +337,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   google-api-client (> 0.7)
+  image_optimizer
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

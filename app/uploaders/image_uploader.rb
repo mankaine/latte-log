@@ -1,5 +1,6 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
+  include CarrierWave::MiniMagick
 
   process :convert => 'png'
   process :tags => %i[report_picture]
@@ -10,17 +11,24 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/report-images/#{public_id}"
   end
 
+  def cache_dir
+    'uploads'
+  end
+
   # Process files as they are uploaded:
   process :convert => 'jpg'
 
   version :index_view do
     height = 350
-    process resize_to_fit: [height, height * 3 / 4]
+    width = height * 3 / 4
+    process :optimize => 15
   end
 
   version :edit_view do
-    height = 500
-    process resize_to_fit: [height, height * 3 / 4]
+    height = 300
+    width = height * 3 / 4
+    process resize_to_fit: [height, width]
+    process :optimize => 20
   end
 
   # White list of extensions which are allowed to be uploaded.

@@ -57,9 +57,13 @@ gem 'simplecov', require: false, group: :test
 gem 'carrierwave'
 gem 'cloudinary'
 
+# Enable image compression
+gem 'image_optimizer'
+
 # Enable image resizing
 gem 'mini_magick'
 
+# Enforce code control
 gem 'reek'
 
 group :development, :test do
